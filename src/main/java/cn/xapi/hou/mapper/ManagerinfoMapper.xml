@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xapi.hou.mapper.ManagerinfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.xapi.hou.po.Managerinfo" >
+    <id column="mangNO" property="mangno" jdbcType="INTEGER" />
+    <result column="mangName" property="mangname" jdbcType="CHAR" />
+    <result column="mangPassword" property="mangpassword" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mangNO, mangName, mangPassword
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.xapi.hou.po.ManagerinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from managerinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from managerinfo
+    where mangNO = #{mangno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from managerinfo
+    where mangNO = #{mangno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.xapi.hou.po.ManagerinfoExample" >
+    delete from managerinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.xapi.hou.po.Managerinfo" >
+    insert into managerinfo (mangNO, mangName, mangPassword
+      )
+    values (#{mangno,jdbcType=INTEGER}, #{mangname,jdbcType=CHAR}, #{mangpassword,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xapi.hou.po.Managerinfo" >
+    insert into managerinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mangno != null" >
+        mangNO,
+      </if>
+      <if test="mangname != null" >
+        mangName,
+      </if>
+      <if test="mangpassword != null" >
+        mangPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mangno != null" >
+        #{mangno,jdbcType=INTEGER},
+      </if>
+      <if test="mangname != null" >
+        #{mangname,jdbcType=CHAR},
+      </if>
+      <if test="mangpassword != null" >
+        #{mangpassword,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.xapi.hou.po.ManagerinfoExample" resultType="java.lang.Integer" >
+    select count(*) from managerinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update managerinfo
+    <set >
+      <if test="record.mangno != null" >
+        mangNO = #{record.mangno,jdbcType=INTEGER},
+      </if>
+      <if test="record.mangname != null" >
+        mangName = #{record.mangname,jdbcType=CHAR},
+      </if>
+      <if test="record.mangpassword != null" >
+        mangPassword = #{record.mangpassword,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update managerinfo
+    set mangNO = #{record.mangno,jdbcType=INTEGER},
+      mangName = #{record.mangname,jdbcType=CHAR},
+      mangPassword = #{record.mangpassword,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xapi.hou.po.Managerinfo" >
+    update managerinfo
+    <set >
+      <if test="mangname != null" >
+        mangName = #{mangname,jdbcType=CHAR},
+      </if>
+      <if test="mangpassword != null" >
+        mangPassword = #{mangpassword,jdbcType=CHAR},
+      </if>
+    </set>
+    where mangNO = #{mangno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xapi.hou.po.Managerinfo" >
+    update managerinfo
+    set mangName = #{mangname,jdbcType=CHAR},
+      mangPassword = #{mangpassword,jdbcType=CHAR}
+    where mangNO = #{mangno,jdbcType=INTEGER}
+  </update>
+</mapper>

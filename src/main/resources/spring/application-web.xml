@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+	<!-- 扫描controller包下的注解，初始化注入spring容器中，如果有其他的依赖，一起注入 -->
+	<context:component-scan base-package="cn.xapi.hou.controller"/>
+	<!-- 简化配置，自动的导入了DefaultAnnotationHandlerMapper和DefaultAnnotationHandlerAdapter
+	提供一系列的：数据绑定，数字，日期的转化，Fromat ，@NumberFromat @DateTimeFromat, json,xml的支持 -->
+	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler/>
+	<!-- 注册一系列的全局视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+	<property name="prefix" value="/WEB-INF/jsp/"></property>
+	<property name="suffix" value=".jsp"></property>
+	</bean>
+		<!-- 自定义类型的参数绑定 -->
+<!-- 	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		转换器
+		<property name="converters">
+			<list>
+				日期类型的转换器
+				<bean class="cn.xapi.util.CustomDateConverter" />
+			</list>
+		</property>
+	</bean> -->
+</beans>

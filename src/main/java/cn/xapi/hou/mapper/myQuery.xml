@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xapi.hou.mapper.myQuery">
+	<resultMap type="cn.xapi.hou.po.Borrow" id="borrowMap">
+		<id column="borrowId" property="borrowid" />
+		<result column="readerNo" property="readerno" />
+		<result column="inTime" property="intime" />
+		<result column="outTime" property="outtime" />
+		<association property="readerinfo" javaType="cn.xapi.hou.po.Readerinfo">
+			<id column="readerNo" property="readerno" />
+			<result column="readerName" property="readername" />
+			<result column="readerMajor" property="readermajor" />
+			<result column="phone" property="phone" />
+		</association>
+		<association property="bookinfo" javaType="cn.xapi.hou.po.Bookinfo">
+
+			<id column="callNo" property="callno" />
+			<result column="bookName" property="bookname" />
+			<result column="bookAuther" property="bookauther" />
+			<result column="time" property="time" />
+			<result column="bookPrice" property="bookprice" />
+			<result column="bookObject" property="bookobject" />
+			<result column="pic" property="pic" />
+
+		</association>
+	</resultMap>
+	<select id="selectReaderBorrowAllInfo" resultMap="borrowMap"
+		parameterType="java.lang.Integer">
+		select
+		readerinfo.readerNo,
+		readerinfo.readerName,
+		readerinfo.readerMajor,
+		borrow.borrowId,
+		borrow.readerNO,
+		borrow.inTime,
+		borrow.outTime,
+		bookinfo.bookName,
+		bookinfo.bookAuther,
+		bookinfo.pic,
+		bookinfo.bookObject,
+		bookinfo.bookPrice,
+		bookinfo.number,
+		bookinfo.time,
+		bookinfo.callNO
+
+		from
+		bookinfo,borrow,readerinfo
+		where bookinfo.callNO
+		=borrow.callNO
+		and
+		readerinfo.readerNO=borrow.readerNO
+		and
+		readerinfo.readerNO=#{callno}
+	</select>
+</mapper>
