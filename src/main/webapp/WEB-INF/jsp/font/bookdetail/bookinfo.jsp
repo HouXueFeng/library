@@ -106,11 +106,15 @@ cc {
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
-							<li class="active"><a href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
-							<li><a href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的预约</a></li>
+							<li class="active"><a
+								href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
+
+							<c:if test="${ not empty  userNo} ">
+								<li><a
+									href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的预约</a></li>
+							</c:if>
 							<li class="has-dropdown"><a href="#">图书资料</a></li>
 							<li><a href="pricing.html">购买图书</a></li>
-							<li><a href="contact.html">借书</a></li>
 							<c:if test="${empty userNo }">
 								<li class="btn-cta"><a
 									href="${pageContext.request.contextPath }/login.action"><span>请登录</span></a></li>

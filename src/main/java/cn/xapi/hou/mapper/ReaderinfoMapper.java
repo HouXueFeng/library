@@ -27,8 +27,8 @@ public interface ReaderinfoMapper {
 	int updateByPrimaryKeySelective(Readerinfo record);
 
 	int updateByPrimaryKey(Readerinfo record);
-
+	//查询用户名是否存在
 	int registerNameOrExits(Readerinfo readerno);
-	
+	//查询用户名或者密码返回是否存在
 	int selectUsernameAndPassword(Readerinfo readerno);
 }
