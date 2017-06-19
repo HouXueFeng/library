@@ -64,9 +64,13 @@ td {
 						</div>
 						<div class="col-xs-8 text-right menu-1">
 							<ul>
-								<li class="active"><a href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
-								<li><a href="tour.html">图书预约</a></li>
-								<li class="has-dropdown"><a href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的图书</a></li>
+								<li class="active"><a
+									href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
+									<li><a href="tour.html">图书预约</a></li>
+								<c:if test="${not empty userNo}">
+									<li class="has-dropdown"><a
+										href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的图书</a></li>
+								</c:if>
 								<li><a href="pricing.html">购买图书</a></li>
 								<li><a href="contact.html">借书</a></li>
 								<c:if test="${empty userNo }">
@@ -129,20 +133,20 @@ td {
 					<div class="row">
 
 						<c:forEach items="${ bookList}" var="book" begin="0" end="7">
-								<div class="col-md-3 col-sm-6">
-									<div class="feature-center animate-box"
-										data-animate-effect="fadeIn" align="center">
-										<div class="11"
-											style="width: 200px;height: 200px; margin-left: 30px; background: url(images/${book.pic});">
-										</div>
-										<h3 align="center">书名：${book.bookname}</h3>
-										<p align="center" style="color: green">￥：剩余数量${ book.number}/100</p>
-										<p align="center">
-											￥：${ book.bookprice}元&nbsp;&nbsp;&nbsp;&nbsp;<span><a
+							<div class="col-md-3 col-sm-6">
+								<div class="feature-center animate-box"
+									data-animate-effect="fadeIn" align="center">
+									<div class="11"
+										style="width: 200px;height: 200px; margin-left: 30px; background: url(images/${book.pic});">
+									</div>
+									<h3 align="center">书名：${book.bookname}</h3>
+									<p align="center" style="color: green">￥：剩余数量${ book.number}/100</p>
+									<p align="center">
+										￥：${ book.bookprice}元&nbsp;&nbsp;&nbsp;&nbsp;<span><a
 											href="${pageContext.request.contextPath }/bookdetail.action?callno=${book.callno}">查看详情</a></span>
 									</p>
-									</div>
 								</div>
+							</div>
 						</c:forEach>
 
 

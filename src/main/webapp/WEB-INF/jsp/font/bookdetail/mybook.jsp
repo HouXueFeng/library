@@ -157,14 +157,29 @@ cc {
 									</div>
 								</c:forEach>
 							</c:if>
-							<ul align="right" class="pagination"  style="float: right; margin-right: 50px">
+							<ul align="right" class="pagination"
+								style="float: right; margin-right: 50px;width: 1000px">
 								<li><a
 									href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${page.firstPage}">首页</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${page.prePage}">上一页</a></li>
+								<c:forEach items="${page.navigatepageNums}"
+									var="navigatepageNum">
+
+									<c:if test="${navigatepageNum==page.pageNum}">
+										<li class="active"><a
+											href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${navigatepageNum}">${navigatepageNum}</a></li>
+									</c:if>
+									<c:if test="${navigatepageNum!=page.pageNum}">
+										<li><a
+											href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${navigatepageNum}">${navigatepageNum}</a></li>
+									</c:if>
+								</c:forEach>
+
+				
+
 								<li><a
 									href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${page.nextPage}">下一页</a></li>
-
 								<li><a
 									href="${pageContext.request.contextPath}/queryBorrowAllBook.action?page=${page.lastPage}">尾页</a></li>
 							</ul>
