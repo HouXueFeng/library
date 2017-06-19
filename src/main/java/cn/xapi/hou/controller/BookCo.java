@@ -74,6 +74,8 @@ public class BookCo {
 		Map<String, Object> map = new HashMap<>();
 		Map<String, Integer> map1 = new HashMap<>();
 		Map<String, Object> map2 = new HashMap<>();
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String currentDate = format.format(new Date());
 		// 预约库存-1
 		map.put("booknumber", 0);
 		map.put("bookno", orderbookno);
@@ -85,8 +87,9 @@ public class BookCo {
 		// 预约信息入库
 		map2.put("yuyuebookno", orderbookno);
 		map2.put("yuyueUserNo", record.getReaderno());
-		map2.put("intime", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-		map2.put("outtime", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+		
+		map2.put("intime", currentDate);
+		map2.put("outtime", currentDate);
 
 		if (book.selectBookNumber(orderbookno) < 1) {
 			return new Result<>(false, "库存不足");
