@@ -1,8 +1,8 @@
 package cn.xapi.hou.mapper;
 
-import static org.junit.Assert.*;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.xapi.hou.po.Borrow;
-import cn.xapi.hou.po.Readerinfo;
 
 /**
 * @author  CreateBy HouXueFeng
@@ -33,4 +32,32 @@ public class myQueryTest {
 		System.out.println(list.get(0).getBookinfo().getBookauther());
 	}
 
+	
+	/**
+	 * 模拟取消预约书号是3，用户id是1的书
+	 */
+
+	@Test
+	public final void cancelBookBorroInfo(){
+		
+		Map<Object, Object> map=new HashMap<>();
+		map.put("deleteCallNo", 3);
+		map.put("deleteReaderNo", 1);
+		int i = query.cancelBookBorroInfo(map);
+		System.out.println(i);
+	}
+	
+	/**
+	 * 模拟取消预约（还书）库存+1
+	 */
+	@Test
+	public final void updateBookNumberIncrement(){
+		Map<Object, Object> map=new HashMap<>();
+		map.put("IncrementBookNo", 3);
+		int i = query.updateBookNumberIncrement(map);
+		System.out.println(i);
+		
+	}
+	
+	
 }

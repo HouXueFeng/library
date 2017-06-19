@@ -52,4 +52,17 @@
 		and
 		readerinfo.readerNO=#{callno}
 	</select>
+	
+	<delete id="cancelBookBorroInfo" parameterType="map">
+	delete  FROM borrow WHERE callNO=#{deleteCallNo} and readerNO=#{deleteReaderNo}
+	</delete>
+	
+	
+	<update id="updateBookNumberIncrement" parameterType="map">
+
+		update bookinfo set number=number+1 where 
+		callNo=#{IncrementBookNo}
+
+	</update>
+	
 </mapper>

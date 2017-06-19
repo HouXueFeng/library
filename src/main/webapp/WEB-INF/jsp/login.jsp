@@ -151,10 +151,6 @@
 							<ul>
 								<li class="active"><a
 									href="${pageContext.request.contextPath }/bookAll.action"><span>主页</span></a></li>
-								<li><a href="tour.html">预约借书</a></li>
-								<li class="has-dropdown"><a href="#">我的图书</a></li>
-								<li><a href="pricing.html">购买图书</a></li>
-								<li class="btn-cta"><a href="#"><span>购物车</span></a></li>
 							</ul>
 						</div>
 					</div>

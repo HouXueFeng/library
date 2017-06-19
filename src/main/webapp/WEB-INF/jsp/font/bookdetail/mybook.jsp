@@ -74,7 +74,7 @@ cc {
 						<ul>
 							<li class="active"><a
 								href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
-							<li><a href="tour.html">图书预约</a></li>
+							<li><a href="#">图书预约</a></li>
 							<li class="has-dropdown"><a
 								href="${pageContext.request.contextPath}/queryBorrowAllBook.action">我的图书</a></li>
 							<li><a href="pricing.html">购买图书</a></li>
@@ -152,7 +152,7 @@ cc {
 													</h3></li>
 												<p>
 											</ul>
-											<a href="#" class="btn btn-default btn-sm">取消预约此书</a>
+											<a href="${pageContext.request.contextPath}/cancelBorrowSingleBook.action?cancelBookNo=${borrow.bookinfo.callno }" class="btn btn-default btn-sm">取消预约此书</a>
 										</div>
 									</div>
 								</c:forEach>

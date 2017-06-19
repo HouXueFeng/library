@@ -17,4 +17,6 @@ public interface BorrowService {
 	//综合查询用户的借书信息，书籍信息，和个人信息
 	 List<Borrow> selectReaderBorrowAllInfo(Integer callno);
 
+	 
+	 
 }

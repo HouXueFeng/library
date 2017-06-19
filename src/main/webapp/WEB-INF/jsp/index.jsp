@@ -71,8 +71,8 @@ td {
 									<li class="has-dropdown"><a
 										href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的图书</a></li>
 								</c:if>
-								<li><a href="pricing.html">购买图书</a></li>
-								<li><a href="contact.html">借书</a></li>
+								<li><a href="#">购买图书</a></li>
+								<li><a href="#">借书</a></li>
 								<c:if test="${empty userNo }">
 									<li class="btn-cta"><a
 										href="${pageContext.request.contextPath }/login.action"><span>请登录</span></a></li>

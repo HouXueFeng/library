@@ -26,6 +26,7 @@ import cn.xapi.hou.po.Borrow;
 import cn.xapi.hou.po.Readerinfo;
 import cn.xapi.hou.service.BookInfoService;
 import cn.xapi.hou.service.BorrowService;
+import cn.xapi.hou.service.CancelBorrowService;
 
 /**
  * @author CreateBy HouXueFeng
@@ -39,6 +40,8 @@ public class BookCo {
 	private BookInfoService book;
 	@Autowired
 	private BorrowService borrow;
+	@Autowired
+	private CancelBorrowService cancel;
 
 	// 返回主页面
 	@RequestMapping("bookAll")
@@ -74,7 +77,7 @@ public class BookCo {
 		Map<String, Object> map = new HashMap<>();
 		Map<String, Integer> map1 = new HashMap<>();
 		Map<String, Object> map2 = new HashMap<>();
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String currentDate = format.format(new Date());
 		// 预约库存-1
 		map.put("booknumber", 0);
@@ -87,7 +90,7 @@ public class BookCo {
 		// 预约信息入库
 		map2.put("yuyuebookno", orderbookno);
 		map2.put("yuyueUserNo", record.getReaderno());
-		
+
 		map2.put("intime", currentDate);
 		map2.put("outtime", currentDate);
 
@@ -109,20 +112,53 @@ public class BookCo {
 	 * 综合查询用户的借书信息及书籍信息，用户信息。 返回我的图书页面
 	 */
 	@RequestMapping("queryBorrowAllBook")
-	public ModelAndView queryBorrowAllBook(HttpSession session,	@RequestParam(required = true, defaultValue = "1") Integer page,
-			@RequestParam(required = false, defaultValue = "4") Integer pageSize ) {
-		ModelAndView model=new ModelAndView();
+	public ModelAndView queryBorrowAllBook(HttpSession session,
+			@RequestParam(required = true, defaultValue = "1") Integer page,
+			@RequestParam(required = false, defaultValue = "4") Integer pageSize) {
+		ModelAndView model = new ModelAndView();
 		Readerinfo record = (Readerinfo) session.getAttribute("userNo");
-	/*	if (record==null) {
-			model.setViewName("forward:bookAll.action");
-		}else{*/
-			PageHelper.startPage(page,pageSize);
+		/*
+		 * if (record==null) { model.setViewName("forward:bookAll.action");
+		 * }else{
+		 */
+		PageHelper.startPage(page, pageSize);
 		List<Borrow> borrowList = borrow.selectReaderBorrowAllInfo(record.getReaderno());
 		PageInfo<Borrow> p = new PageInfo<Borrow>(borrowList);
 		model.addObject("page", p);
 		model.addObject("borrowList", borrowList);
 		model.setViewName("font/bookdetail/mybook");
-//		}
+		// }
 		return model;
 	}
+
+	/**
+	 * 取消预约书籍
+	 * 
+	 */
+
+	@RequestMapping("cancelBorrowSingleBook")
+	public String queryBorrowAllBook(HttpSession session, @RequestParam("cancelBookNo") Integer callno) {
+		Readerinfo record = (Readerinfo) session.getAttribute("userNo");
+
+		System.out.println(callno + "-------------->");
+
+		if (record.getReaderno() == null) {
+			return "forward:bookAll.action";
+		} else {
+			System.out.println(record.getReaderno() + "=================>");
+			Map<String, Integer> map = new HashMap<>();
+			Map<String, Integer> map1 = new HashMap<>();
+
+			map1.put("deleteCallNo", callno);
+			map1.put("deleteReaderNo", record.getReaderno());
+			int i = cancel.cancelBookBorroInfo(map1);
+			System.out.println(i);
+			map.put("IncrementBookNo", callno);
+			if (i == 1) {
+				cancel.updateBookNumberIncrement(map);
+			}
+			return "forward:queryBorrowAllBook.action";
+		}
+	}
+
 }
