@@ -78,17 +78,10 @@ public class BookCo {
 		System.out.println(bookinfo.getBookobject() + "---------->");
 		PageHelper.startPage(page, pageSize);
 		PageInfo<Bookinfo> p = new PageInfo<>(null);
-		if (bookinfo.getBookobject().equals("全部")) {
-			List<Bookinfo> selectBookAll = book.selectBookAll();
-			p = new PageInfo<Bookinfo>(selectBookAll);
-			model.addObject("bookList", selectBookAll);
-		} else {
 			List<Bookinfo> selectBookAll = book.selectBookLike(bookinfo);
 			p = new PageInfo<Bookinfo>(selectBookAll);
 			model.addObject("bookList", selectBookAll);
-		}
 		model.addObject("page", p);
-		
 		model.setViewName("font/bookdetail/bookBorrow");
 		return model;
 	}

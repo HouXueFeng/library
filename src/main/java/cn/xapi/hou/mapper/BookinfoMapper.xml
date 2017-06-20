@@ -325,16 +325,6 @@
 		<if test="bookname != null">
 				bookName like '%${bookname}%'
 			</if>
-			
-			
-				and
-			<if test="bookobject != null">
-				bookObject like '%${bookobject}%'
-			</if>
-
-		
-			
-
 		</where>
 
 	</select>

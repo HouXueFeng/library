@@ -133,16 +133,6 @@ cc {
 					<form class="form-search"
 						action="${pageContext.request.contextPath }/selectAlllikeBook.action"
 						method="post">
-						<select class="selectpicker" data-size="5" name="bookobject"
-							id="bookobject">
-							<option value="  "></option>
-							<option value="全部">全部</option>
-							<option value="玄幻">玄幻</option>
-							<option value="文学">文学</option>
-							<option value="青春">青春</option>
-							<option value="生活">生活</option>
-							<option value="电影">电影</option>
-						</select> 
 						<input type="text" class="form-control" name="bookname"
 							id="bookname"
 							style="border-radius: 10px; width: 200px; display: inline">
