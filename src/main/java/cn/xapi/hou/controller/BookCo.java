@@ -1,5 +1,6 @@
 package cn.xapi.hou.controller;
 
+import java.awt.print.Book;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,11 +45,52 @@ public class BookCo {
 	private CancelBorrowService cancel;
 
 	// 返回主页面
+	// 只显示了热销商品
 	@RequestMapping("bookAll")
 	public String bookAll(Model model) {
 		List<Bookinfo> selectBookAll = book.selectBookAll();
 		model.addAttribute("bookList", selectBookAll);
 		return "index";
+	}
+
+	// 图书预约展示所有书籍
+	@RequestMapping("selectAllBook")
+	public ModelAndView selectAllBook(ModelAndView model,
+			@RequestParam(required = true, defaultValue = "1") Integer page,
+			@RequestParam(required = false, defaultValue = "8") Integer pageSize) {
+		PageHelper.startPage(page, pageSize);
+
+		List<Bookinfo> selectBookAll = book.selectBookAll();
+		PageInfo<Bookinfo> p = new PageInfo<Bookinfo>(selectBookAll);
+		model.addObject("page", p);
+		model.addObject("bookList", selectBookAll);
+		model.setViewName("font/bookdetail/bookBorrow");
+		return model;
+
+	}
+
+	// 模糊查询
+	@RequestMapping("selectAlllikeBook")
+	public ModelAndView selectAlllikeBook(ModelAndView model,
+			@RequestParam(required = true, defaultValue = "1") Integer page,
+			@RequestParam(required = false, defaultValue = "8") Integer pageSize, Bookinfo bookinfo) {
+
+		System.out.println(bookinfo.getBookobject() + "---------->");
+		PageHelper.startPage(page, pageSize);
+		PageInfo<Bookinfo> p = new PageInfo<>(null);
+		if (bookinfo.getBookobject().equals("全部")) {
+			List<Bookinfo> selectBookAll = book.selectBookAll();
+			p = new PageInfo<Bookinfo>(selectBookAll);
+			model.addObject("bookList", selectBookAll);
+		} else {
+			List<Bookinfo> selectBookAll = book.selectBookLike(bookinfo);
+			p = new PageInfo<Bookinfo>(selectBookAll);
+			model.addObject("bookList", selectBookAll);
+		}
+		model.addObject("page", p);
+		
+		model.setViewName("font/bookdetail/bookBorrow");
+		return model;
 	}
 
 	// 返回书籍详情页面

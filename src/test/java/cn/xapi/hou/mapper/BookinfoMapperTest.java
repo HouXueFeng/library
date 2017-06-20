@@ -47,5 +47,17 @@ public class BookinfoMapperTest {
 		int i = b.updateBookNumber(map);
 		System.out.println(i);
 	}
+	
+	@Test
+	public final void selectBookLike(){
+	
+
+		Bookinfo bookinfo=new Bookinfo();
+		bookinfo.setBookobject("电");
+		List<Bookinfo> list = b.selectBookLike(bookinfo);
+		for (Bookinfo bookinfo2 : list) {
+		System.out.println(bookinfo2.getBookobject());	
+		}
+	}
 
 }

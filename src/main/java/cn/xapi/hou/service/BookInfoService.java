@@ -16,7 +16,7 @@ public interface BookInfoService{
 	List<Bookinfo> selectBookAll();
 	 int updateBookNumber(Map map);
 	 int selectBookNumber(int callno);
-	 
+	 List<Bookinfo>selectBookLike(Bookinfo object);
 	 
 	 
 

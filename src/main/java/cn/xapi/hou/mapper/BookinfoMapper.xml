@@ -307,15 +307,35 @@
 		<include refid="Base_Column_List" />
 		from bookinfo
 	</select>
-
 	<update id="updateBookNumber" parameterType="map">
-
-		update bookinfo set number=number-1 where number>#{booknumber} and
+		update bookinfo set
+		number=number-1 where number>#{booknumber} and
 		callNo=#{bookno}
-
 	</update>
-
 	<select id="selectBookNumber" resultType="int" parameterType="int">
-	select number from bookinfo where callNO=#{callno}
+		select number from bookinfo where callNO=#{callno}
+	</select>
+	<select id="selectBookLike" parameterType="cn.xapi.hou.po.Bookinfo"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from bookinfo
+
+		<where>
+		<if test="bookname != null">
+				bookName like '%${bookname}%'
+			</if>
+			
+			
+				and
+			<if test="bookobject != null">
+				bookObject like '%${bookobject}%'
+			</if>
+
+		
+			
+
+		</where>
+
 	</select>
 </mapper>

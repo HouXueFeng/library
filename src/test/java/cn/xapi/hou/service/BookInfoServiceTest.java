@@ -34,4 +34,14 @@ private BookInfoService service;
 			System.out.println(bookinfo.getBookauther());
 		}
 	}
+	
+	@Test
+	public final void selectBookLike(){
+		Bookinfo bookinfo=new Bookinfo();
+		bookinfo.setBookobject("玄幻");
+		List<Bookinfo> list = service.selectBookLike(bookinfo);
+		for (Bookinfo bookinfo2 : list) {
+		System.out.println(bookinfo2.getBookobject());	
+		}
+	}
 }

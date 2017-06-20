@@ -37,5 +37,7 @@ public interface BookinfoMapper {
 	 int updateBookNumber(Map map);
 	 //查询某书的数量
 	 int selectBookNumber(int callno);
+	 //按照类型查询
+	 List<Bookinfo>selectBookLike(Bookinfo object);
 
 }

@@ -45,4 +45,9 @@ public class BookInfoServiceImp implements BookInfoService {
 		return mapper.selectBookNumber(callno);
 	}
 
+	@Override
+	public List<Bookinfo> selectBookLike(Bookinfo object) {
+		return mapper.selectBookLike(object);
+	}
+
 }

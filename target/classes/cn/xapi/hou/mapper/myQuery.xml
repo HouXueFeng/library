@@ -13,7 +13,6 @@
 			<result column="phone" property="phone" />
 		</association>
 		<association property="bookinfo" javaType="cn.xapi.hou.po.Bookinfo">
-
 			<id column="callNo" property="callno" />
 			<result column="bookName" property="bookname" />
 			<result column="bookAuther" property="bookauther" />
