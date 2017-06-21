@@ -151,6 +151,15 @@
 							<ul>
 								<li class="active"><a
 									href="${pageContext.request.contextPath }/bookAll.action"><span>主页</span></a></li>
+
+								<li><a href="#">预约借书</a></li>
+								<c:if test="${not empty userNo }">
+									<li class="#"><a href="#">我的图书</a></li>
+
+									<li><a href="#">购买图书</a></li>
+									<li class="btn-cta"><a href="#"><span>购物车</span></a></li>
+
+								</c:if>
 							</ul>
 						</div>
 					</div>
@@ -193,14 +202,14 @@
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="username">学号</label> <input type="text"
-																	class="form-control" id="no" name="readerno">
+																	class="form-control" id="no" name="readerno" width="100%"style="display: block;">
 															</div>
 														</div>
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="password">密码</label> <input type="password"
 																	class="form-control" id="password"
-																	name="readerpassword">
+																	name="readerpassword"  width="100%"style="display: block;">
 															</div>
 														</div>
 
@@ -208,13 +217,13 @@
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="readername">姓名</label> <input type="text"
-																	class="form-control" id="username" name="readername">
+																	class="form-control" id="username" name="readername"  width="100%"style="display: block;">
 															</div>
 														</div>
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="phone">手机号</label> <input type="text"
-																	class="form-control" id="phone" name="phone">
+																	class="form-control" id="phone" name="phone" width="100%"style="display: block;">
 															</div>
 														</div>
 
@@ -241,19 +250,19 @@
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="username">学号</label> <input type="text"
-																	class="form-control" id="user" name="readerno" />
+																	class="form-control" id="user" name="readerno" width="100%"style="display: block;" />
 															</div>
 														</div>
 														<div class="row form-group">
 															<div class="col-md-12">
 																<label for="password">密码</label> <input type="password"
-																	class="form-control" id="pass" name="readerpassword" />
+																	class="form-control" id="pass" name="readerpassword"  width="100%"style="display: block;"/>
 															</div>
 														</div>
 
 														<div class="row form-group">
 															<div class="col-md-12">
-																<input type="button" class="btn btn-primary" value="登录"
+																<input align="center" type="button" class="btn btn-primary" value="登录"
 																	onclick="userLogin1()" />
 															</div>
 														</div>
@@ -283,9 +292,10 @@
 					<div class="row">
 						<div
 							class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-							<h2 style="margin-top: 50px;  margin-left:380px;"align="center">心情图书馆</h2>
+							<h2 style="margin-top: 50px; margin-left: 380px;" align="center">心情图书馆</h2>
 							<p>
-								<span style="margin-top: 50px; margin-left:380px;"align="center">BookYou</span>
+								<span style="margin-top: 50px; margin-left: 380px;"
+									align="center">BookYou</span>
 							</p>
 						</div>
 					</div>
@@ -294,7 +304,7 @@
 				</div>
 			</div>
 		</div>
-		<footer id="gtco-footer" role="contentinfo"style="margin-top: 50px">
+		<footer id="gtco-footer" role="contentinfo" style="margin-top: 50px">
 			<div class="gtco-container">
 				<div class="row row-p	b-md">
 

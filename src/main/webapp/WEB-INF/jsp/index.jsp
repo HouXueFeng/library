@@ -127,7 +127,7 @@ td {
 					<div class="hrpic" style="background-image: url(images/hr.png);">
 
 						读书资讯
-						<div class="1" style="float: right;">更多</div>
+						<div class="1" style="float: right;"><a href="${pageContext.request.contextPath }/selectAllBook.action">更多</a></div>
 						<p>
 						<p>
 					</div>

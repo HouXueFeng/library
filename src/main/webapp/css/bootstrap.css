@@ -2068,7 +2068,8 @@ output {
 
 .form-control {
 
- 
+ display:block;
+  width: 100%;
   height: 42px;
   padding: 10px 20px;
   font-size: 14px;
