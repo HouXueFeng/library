@@ -23,10 +23,12 @@ public class CancelBorrowBookImp implements CancelBorrowService{
 	private myQuery query;
 	
 	@Override
+	//取消预约
 	public int cancelBookBorroInfo(Map<String, Integer> map) {
 		return query.cancelBookBorroInfo(map);
 	}
 
+	//库存+1
 	@Override
 	public int updateBookNumberIncrement(Map<String, Integer> map) {
 		return query.updateBookNumberIncrement(map);

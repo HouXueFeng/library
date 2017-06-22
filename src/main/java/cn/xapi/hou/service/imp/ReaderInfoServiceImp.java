@@ -16,7 +16,7 @@ import cn.xapi.hou.service.ReadInfotService;
 /**
  * @author CreateBy HouXueFeng
  * @version 2017年6月10日 下午12:32:06
- * @description
+ * @description 用户操作
  */
 
 @Service
@@ -26,16 +26,20 @@ public class ReaderInfoServiceImp implements ReadInfotService {
 	@Autowired
 	private ReaderinfoMapper mapper;
 
+	
+	//注册
 	@Override
 	public int insert(Readerinfo record) {
 		return mapper.insert(record);
 	}
 
+	//用户名是否存在
 	@Override
 	public int registerNameOrExits(Readerinfo readerno) {
 		return mapper.registerNameOrExits(readerno);
 	}
 
+	//用户名密码是否正确
 	@Override
 	public int selectUsernameAndPassword(Readerinfo readerno) {
 		return mapper.selectUsernameAndPassword(readerno);

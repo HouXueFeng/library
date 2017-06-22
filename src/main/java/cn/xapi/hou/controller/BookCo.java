@@ -173,7 +173,6 @@ public class BookCo {
 	 * 取消预约书籍
 	 * 
 	 */
-
 	@RequestMapping("cancelBorrowSingleBook")
 	public String queryBorrowAllBook(HttpSession session, @RequestParam("cancelBookNo") Integer callno) {
 		Readerinfo record = (Readerinfo) session.getAttribute("userNo");
@@ -198,5 +197,4 @@ public class BookCo {
 			return "forward:queryBorrowAllBook.action";
 		}
 	}
-
 }

@@ -16,7 +16,7 @@ import cn.xapi.hou.service.ReadInfotService;
 /**
  * @author CreateBy HouXueFeng
  * @version 2017年6月11日 上午11:13:50
- * @description
+ * @description 登录
  */
 @Controller
 public class LoginCo {

@@ -17,7 +17,7 @@ import cn.xapi.hou.service.BorrowService;
 /**
 * @author  CreateBy HouXueFeng
 * @version 2017年6月12日 下午6:29:42
-* @description
+* @description 预约
 */
 
 @Service
@@ -29,7 +29,10 @@ private BorrowMapper borrow;
 
 @Autowired
 private myQuery query;
+
+
 	@Override
+	//查询是否超过预约数量
 	public int selectIsNotOutbook(Map<String, Integer> map) {
 		return borrow.selectIsNotOutbook(map);
 	}
@@ -39,6 +42,7 @@ private myQuery query;
 		return borrow.yuyueBook(map);
 	}
 	@Override
+	//查询读者预约记录
 	public List<Borrow> selectReaderBorrowAllInfo(Integer callno) {
 		return query.selectReaderBorrowAllInfo(callno);
 	}
