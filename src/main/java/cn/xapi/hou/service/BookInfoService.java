@@ -19,5 +19,6 @@ public interface BookInfoService{
 	 List<Bookinfo>selectBookLike(Bookinfo object);
 	 
 	 
+	 
 
 }

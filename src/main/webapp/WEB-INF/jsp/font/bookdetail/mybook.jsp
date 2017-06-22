@@ -148,7 +148,7 @@ cc {
 														<img src="images/5.png" width="50px;" height="50px;" />出版日期:${borrow.bookinfo.time }
 													</h3></li>
 												<li><h3>
-														<img src="images/6.png" width="50px;" height="50px;" />预约时间:${borrow.intime }
+														<img src="images/6.png" width="50px;" height="50px;" />借书时间：<fmt:formatDate value="${borrow.intime }" pattern="yyyy-MM-dd"/>
 													</h3></li>
 												<p>
 											</ul>

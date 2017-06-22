@@ -114,6 +114,8 @@ public class BookCo {
 		Map<String, Object> map2 = new HashMap<>();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String currentDate = format.format(new Date());
+		
+		System.out.println(currentDate+"------------->");
 		// 预约库存-1
 		map.put("booknumber", 0);
 		map.put("bookno", orderbookno);
@@ -127,6 +129,7 @@ public class BookCo {
 		map2.put("yuyueUserNo", record.getReaderno());
 
 		map2.put("intime", currentDate);
+		
 		map2.put("outtime", currentDate);
 
 		if (book.selectBookNumber(orderbookno) < 1) {

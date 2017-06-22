@@ -68,6 +68,7 @@ td {
 									href="${pageContext.request.contextPath }/bookAll.action">主页</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/selectAllBook.action">图书预约</a></li>
+									<li><a href="tour.html">图书预约</a></li>
 								<c:if test="${not empty userNo}">
 									<li class="has-dropdown"><a
 										href="${pageContext.request.contextPath }/queryBorrowAllBook.action">我的图书</a></li>
